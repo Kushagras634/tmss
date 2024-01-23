@@ -4,11 +4,11 @@ const User = require('../models/user');
 const authMiddleware = async (req, res, next) => {
     try {
         const token = req.header('Authorization').replace('Bearer ', '');
-        console.log(token);
+        //console.log(token);
         const decoded = jwt.verify(token, "jeevesh");
-        console.log(decoded.user);
+        //console.log(decoded.user);
         const user = await User.findOne({ email: decoded.user.email});   
-        console.log("user", user)
+        //console.log("user", user)
         if (!user) {
             throw new Error();
         }
